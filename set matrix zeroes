@@ -1,0 +1,47 @@
+class Solution {
+    public static void printarray(int arr[][]){
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[0].length;j++){
+                System.out.print(arr[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    public static void setRowColZeros(int arr[][],int row,int col){
+        //setting total row of 0th element to zeroes
+        for(int i=0;i<arr.length;i++){
+              arr[i][col]=0;
+        }
+        //setting total col of 0th element to zeroes
+        for(int j=0;j<arr[0].length;j++){
+              arr[row][j]=0;
+        }
+    }
+    public void setZeroes(int[][] matrix) {
+        //brute force approach
+        int m=matrix.length;
+        int n=matrix[0].length;
+        int arr[][]=new int[m][n];
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                arr[i][j]=matrix[i][j];
+            }
+        }
+        //finding 0 element
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+               if(matrix[i][j]==0){
+                   setRowColZeros(arr,i,j);
+               }
+            }
+          
+        }
+         for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                matrix[i][j]=arr[i][j];
+            }
+        }
+        printarray(matrix);
+
+    }
+}
