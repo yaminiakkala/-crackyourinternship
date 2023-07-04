@@ -1,0 +1,23 @@
+import java.util.*;
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+       //sort nums
+        Arrays.sort(nums);
+          //create a arraylist
+          ArrayList <Integer> ans=new ArrayList<>();
+
+       //creat a stack
+         Stack <Integer> s=new Stack<>();
+         s.push(nums[0]);
+       // find twice repeated number
+       for(int i=1;i<nums.length;i++){
+           if(nums[i]==s.peek()){
+               ans.add(nums[i]);
+           }
+           else{
+               s.push(nums[i]);
+           }
+       }
+       return ans;
+    }
+}
