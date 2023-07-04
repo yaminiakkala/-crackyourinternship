@@ -1,0 +1,18 @@
+class Solution {
+    public int subarraysDivByK(int[] nums, int target) {
+        int n=nums.length;
+        int nsuArry=0;
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                 int sum=0;
+                 for(int k=i; k<=j;k++){
+                       sum += nums[k];
+                 }
+                 if(sum%target==0){
+                      nsuArry++;
+                 }
+            }
+        }
+         return nsuArry;
+    }
+}
