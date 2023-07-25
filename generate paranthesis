@@ -1,0 +1,28 @@
+import java.util.*;
+class Solution {
+    public static void backtracking(List<String>li,int open,int close,int n,String str){
+        //base condition 
+        if(str.length()==2*n){
+             li.add(str);
+             return;
+        }
+
+        //adding opening paranthesis condition  -
+        if(open<n){
+            backtracking(li,open+1,close,n,str+"(");
+        }
+        //adding closing paranthesis condition
+        if(close<open){
+            backtracking (li,open,close+1,n,str+")");
+        }
+    }
+
+    public List<String> generateParenthesis(int n) {
+        List<String> li=new ArrayList<>();
+        //call a function 
+       backtracking(li,0,0,n,"");  //passing present list,no of open paranthesis fixed,no.of closed paranthse,n,string
+        return li;
+
+    }
+    
+}
