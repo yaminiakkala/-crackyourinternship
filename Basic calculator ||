@@ -1,0 +1,37 @@
+class Solution {
+    public boolean isOperator(char ch){
+        return ch=='+'|| ch=='-' || ch=='*'|| ch=='/';
+    }
+    public int calculate(String str) {
+        Stack <Integer> s=new Stack<>();
+        int num=0;
+        char op='+';
+        for(int i=0;i<str.length();i++){
+            char ch=str.charAt(i);
+            if(Character.isDigit(ch)){
+                num=num*10+(ch-'0');
+            }
+            if(isOperator(ch)|| i==str.length()-1){
+                if(op=='+'){
+                    s.push(num);
+                }
+                else if(op=='-'){
+                    s.push(-num);
+                }
+                else if(op=='*'){
+                    s.push(s.pop()*num);
+                }
+                else if(op=='/'){
+                    s.push(s.pop()/num);
+                }
+                num=0;
+                op=ch;
+            }
+        }
+        int ans=0;
+        while(!s.isEmpty()){
+            ans +=s.pop();
+        }
+        return ans;
+    }
+}
